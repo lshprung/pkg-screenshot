@@ -14,4 +14,6 @@ pkg-screenshot.sh [options] package
 
 ### Options
 
+**-h, --help** - Print a help list
+
 **--no-download** - Open the image URL instead of saving an image file in /tmp/
