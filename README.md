@@ -4,10 +4,14 @@ pkg-screenshot is a shell script that can display preview screenshots of package
 
 ## Prerequisites
 
-pkg-screenshot requires **jq** to parse the json provided at `https://screenshots.debian.net/json/package/PACKAGENAME` and **xdg-open** to open the image URL
+pkg-screenshot requires **wget** to download screenshots, **jq** to parse the json provided at `https://screenshots.debian.net/json/package/PACKAGENAME` and **xdg-open** to open the image file (saved to the /tmp/ directory)
 
 ## Usage
 
 ```
-pkg-screenshot.sh package
+pkg-screenshot.sh [options] package
 ```
+
+### Options
+
+**--no-download** - Open the image URL instead of saving an image file in /tmp/
