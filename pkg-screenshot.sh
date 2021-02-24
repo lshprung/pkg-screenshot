@@ -20,6 +20,8 @@ case $1 in
 			URL=`wget -qO- https://screenshots.debian.net/json/package/$2 | jq '.screenshots[0].large_image_url' | tr -d \"`
 			if [ -z $URL ]; then
 				echo "Error: Package \"$2\" does not exist"
+			elif [ $URL = "null" ]; then
+				echo "Error: Package \"$2\" does not have any screenshots available"
 			else
 				xdg-open $URL
 			fi
@@ -34,6 +36,8 @@ case $1 in
 			URL=`wget -qO- https://screenshots.debian.net/json/package/$1 | jq '.screenshots[0].large_image_url' | tr -d \"`
 			if [ -z $URL ]; then
 				echo "Error: Package \"$1\" does not exist"
+			elif [ $URL = "null" ]; then
+				echo "Error: Package \"$1\" does not have any screenshots available"
 			else
 				EXTENSION=`echo $URL | rev | cut -d . -f 1 | rev`
 				wget -qO /tmp/pkg-screenshot.$EXTENSION $URL
